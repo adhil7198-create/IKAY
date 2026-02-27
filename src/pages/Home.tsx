@@ -32,7 +32,7 @@ const Home: React.FC = () => {
                 const { data, error } = await supabase
                     .from('products')
                     .select('*')
-                    .limit(4)
+                    .limit(8)
                     .order('created_at', { ascending: false });
 
                 if (error) throw error;
@@ -189,7 +189,7 @@ const Home: React.FC = () => {
                             </div>
                         </Link>
                         <Link to="/shop?category=Jackets" className="group relative h-[500px] overflow-hidden bg-[#0d0d0d]">
-                            <img src="/images/tech_bomber.png" alt="Jackets" className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105" />
+                            <img src="/images/hero_racing.png" alt="Jackets" className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                             <div className="absolute bottom-8 left-8">
                                 <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--accent)] mb-2 block">Archive 03</span>

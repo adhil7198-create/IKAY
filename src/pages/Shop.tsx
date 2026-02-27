@@ -31,7 +31,7 @@ const Shop: React.FC = () => {
         { id: 9, name: 'M-01 Technical Bomber', category: 'Jackets', price: '₹4,999.00', image_url: '/images/tech_bomber.png', is_member_only: true },
         { id: 10, name: 'High-Utility Cargo Shorts', category: 'Shorts', price: '₹2,499.00', image_url: '/images/cargo_shorts.png' },
         { id: 11, name: 'Boxy Flannel Workshop Shirt', category: 'Shirts', price: '₹2,899.00', image_url: '/images/shirt.png' },
-        { id: 12, name: 'Deconstructed Racing Jacket', category: 'Jackets', price: '₹5,499.00', image_url: '/images/hero_lace_up.jpg', is_member_only: true },
+        { id: 12, name: 'Deconstructed Racing Jacket', category: 'Jackets', price: '₹5,499.00', image_url: '/images/hero_racing.png', is_member_only: true },
         { id: 13, name: 'Vintage Wash Oversized Shirt', category: 'Shirts', price: '₹2,199.00', image_url: '/images/shirt.png' },
     ];
 
