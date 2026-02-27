@@ -10,6 +10,7 @@ import AuthModal from './components/auth/AuthModal';
 // Lazy load pages for performance
 const Home = lazy(() => import('./pages/Home'));
 const Shop = lazy(() => import('./pages/Shop'));
+const Profile = lazy(() => import('./pages/Profile'));
 
 const App: React.FC = () => {
   const [showSplash, setShowSplash] = useState(true);
@@ -43,6 +44,7 @@ const App: React.FC = () => {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/shop" element={<Shop />} />
+                  <Route path="/profile" element={<Profile />} />
                 </Routes>
               </Suspense>
             </main>
