@@ -216,6 +216,9 @@ const AdminProducts: React.FC = () => {
                                             <option>Baggy Pants</option>
                                             <option>Hoodies</option>
                                             <option>Jeans</option>
+                                            <option>Jackets</option>
+                                            <option>Shorts</option>
+                                            <option>Shirts</option>
                                         </select>
                                     </div>
                                     <div className="flex flex-col gap-2">

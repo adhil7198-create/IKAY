@@ -23,6 +23,7 @@ const Home: React.FC = () => {
         { id: 2, name: 'Vintage Acid Wash Sweatshirt', category: 'Graphic Sweats', price: '₹2,299.00', image_url: '/images/hoodies.png' },
         { id: 3, name: '07 Streetide Racing Tee', category: 'Racing Tees', price: '₹1,699.00', image_url: '/images/racing_tees.png' },
         { id: 4, name: '90s Baggy Utility Denim', category: 'Baggy Denim', price: '₹2,899.00', image_url: '/images/baggy_denim.png' },
+        { id: 9, name: 'M-01 Technical Bomber', category: 'Jackets', price: '₹4,999.00', image_url: '/images/tech_bomber.png' },
     ];
 
     useEffect(() => {
@@ -164,30 +165,48 @@ const Home: React.FC = () => {
             {/* Category Grid - Street Aesthetic */}
             <section className="py-32 bg-white">
                 <div className="container">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <Link to="/shop?category=Racing Tees" className="group relative h-[600px] overflow-hidden bg-[#111]">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                        <Link to="/shop?category=Racing Tees" className="group relative h-[500px] overflow-hidden bg-[#111]">
                             <img src="/images/racing_tees.png" alt="Racing Tees" className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                            <div className="absolute bottom-12 left-12">
-                                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--accent)] mb-4 block">Archive 01</span>
-                                <h3 className="text-5xl md:text-7xl font-heading font-black italic text-white uppercase tracking-tighter mb-6">Racing <br />Tees</h3>
-                                <span className="inline-flex items-center gap-4 text-white font-black uppercase text-xs tracking-widest group-hover:translate-x-4 transition-transform">
-                                    Shop Now <ArrowRight size={20} />
+                            <div className="absolute bottom-8 left-8">
+                                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--accent)] mb-2 block">Archive 01</span>
+                                <h3 className="text-4xl font-heading font-black italic text-white uppercase tracking-tighter mb-4">Racing <br />Tees</h3>
+                                <span className="inline-flex items-center gap-4 text-white font-black uppercase text-[10px] tracking-widest group-hover:translate-x-2 transition-transform">
+                                    Shop Now <ArrowRight size={16} />
                                 </span>
                             </div>
                         </Link>
-                        <Link to="/shop?category=Graphic Sweats" className="group relative h-[600px] overflow-hidden bg-black">
-                            <img
-                                src="/images/travis_sweat.png"
-                                alt="Graphic Sweats"
-                                className="w-full h-full object-cover object-top transition-all duration-1000 group-hover:scale-105"
-                            />
+                        <Link to="/shop?category=Graphic Sweats" className="group relative h-[500px] overflow-hidden bg-black">
+                            <img src="/images/travis_sweat.png" alt="Graphic Sweats" className="w-full h-full object-cover object-top transition-all duration-1000 group-hover:scale-105" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
-                            <div className="absolute bottom-12 left-12">
-                                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--accent)] mb-4 block">Archive 02</span>
-                                <h3 className="text-5xl md:text-7xl font-heading font-black italic text-white uppercase tracking-tighter mb-6">Graphic <br />Sweats</h3>
-                                <span className="inline-flex items-center gap-4 text-white font-black uppercase text-xs tracking-widest group-hover:translate-x-4 transition-transform">
-                                    Shop Now <ArrowRight size={20} />
+                            <div className="absolute bottom-8 left-8">
+                                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--accent)] mb-2 block">Archive 02</span>
+                                <h3 className="text-4xl font-heading font-black italic text-white uppercase tracking-tighter mb-4">Graphic <br />Sweats</h3>
+                                <span className="inline-flex items-center gap-4 text-white font-black uppercase text-[10px] tracking-widest group-hover:translate-x-2 transition-transform">
+                                    Shop Now <ArrowRight size={16} />
+                                </span>
+                            </div>
+                        </Link>
+                        <Link to="/shop?category=Jackets" className="group relative h-[500px] overflow-hidden bg-[#0d0d0d]">
+                            <img src="/images/tech_bomber.png" alt="Jackets" className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                            <div className="absolute bottom-8 left-8">
+                                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--accent)] mb-2 block">Archive 03</span>
+                                <h3 className="text-4xl font-heading font-black italic text-white uppercase tracking-tighter mb-4">Utility <br />Jackets</h3>
+                                <span className="inline-flex items-center gap-4 text-white font-black uppercase text-[10px] tracking-widest group-hover:translate-x-2 transition-transform">
+                                    Shop Now <ArrowRight size={16} />
+                                </span>
+                            </div>
+                        </Link>
+                        <Link to="/shop?category=Shirts" className="group relative h-[500px] overflow-hidden bg-black">
+                            <img src="/images/shirt.png" alt="Shirts" className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                            <div className="absolute bottom-8 left-8">
+                                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--accent)] mb-2 block">Archive 04</span>
+                                <h3 className="text-4xl font-heading font-black italic text-white uppercase tracking-tighter mb-4">Drop <br />Shirts</h3>
+                                <span className="inline-flex items-center gap-4 text-white font-black uppercase text-[10px] tracking-widest group-hover:translate-x-2 transition-transform">
+                                    Shop Now <ArrowRight size={16} />
                                 </span>
                             </div>
                         </Link>

@@ -28,6 +28,11 @@ const Shop: React.FC = () => {
         { id: 6, name: 'Classic Longline Hoodie', category: 'Hoodies', price: '₹2,499.00', image_url: '/images/hoodies.png' },
         { id: 7, name: 'Signature Logo Tee', category: 'T-Shirts', price: '₹1,499.00', image_url: '/images/tshirts.png', is_member_only: true },
         { id: 8, name: 'Classic Oversized Hoodie', category: 'Hoodies', price: '₹2,699.00', image_url: '/images/hoodies.png' },
+        { id: 9, name: 'M-01 Technical Bomber', category: 'Jackets', price: '₹4,999.00', image_url: '/images/tech_bomber.png', is_member_only: true },
+        { id: 10, name: 'High-Utility Cargo Shorts', category: 'Shorts', price: '₹2,499.00', image_url: '/images/cargo_shorts.png' },
+        { id: 11, name: 'Boxy Flannel Workshop Shirt', category: 'Shirts', price: '₹2,899.00', image_url: '/images/shirt.png' },
+        { id: 12, name: 'Deconstructed Racing Jacket', category: 'Jackets', price: '₹5,499.00', image_url: '/images/hero_lace_up.jpg', is_member_only: true },
+        { id: 13, name: 'Vintage Wash Oversized Shirt', category: 'Shirts', price: '₹2,199.00', image_url: '/images/shirt.png' },
     ];
 
     useEffect(() => {
@@ -87,7 +92,7 @@ const Shop: React.FC = () => {
                                         Category <ChevronDown size={14} />
                                     </h4>
                                     <ul className="flex flex-col gap-3 text-gray-500 text-xs">
-                                        {['Racing Tees', 'Graphic Sweats', 'Baggy Pants', 'Hoodies', 'Jeans'].map(cat => (
+                                        {['Racing Tees', 'Graphic Sweats', 'Baggy Pants', 'Hoodies', 'Jeans', 'Jackets', 'Shorts', 'Shirts'].map(cat => (
                                             <li key={cat} className="flex items-center gap-3 cursor-pointer hover:text-black transition-colors">
                                                 <input type="checkbox" className="w-3 h-3 rounded-none border-gray-300 accent-black text-black" />
                                                 <span className="font-bold uppercase tracking-tight">{cat}</span>
