@@ -20,11 +20,11 @@ const Shop: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     const hardcodedProducts = [
-        { id: 1, name: 'Travis Edition Graphix Sweat', category: 'Graphic Sweats', price: '₹2,499.00', image_url: '/images/graphic_sweats.png' },
+        { id: 1, name: 'Travis Edition Graphix Sweat', category: 'Graphic Sweats', price: '₹2,499.00', image_url: '/images/travis_sweat.png' },
         { id: 2, name: 'Vintage Acid Wash Sweatshirt', category: 'Graphic Sweats', price: '₹2,299.00', image_url: '/images/hoodies.png' },
         { id: 3, name: 'Stone Baggy Cargo Pant', category: 'Baggy Pants', price: '₹2,199.00', image_url: '/images/baggy_pants.png' },
         { id: 4, name: '07 Streetide Racing Tee', category: 'Racing Tees', price: '₹1,699.00', image_url: '/images/racing_tees.png', is_member_only: true },
-        { id: 5, name: 'Vintage Wash Baggy Denim', category: 'Baggy Denim', price: '₹2,899.00', image_url: '/images/baggy_denim.png' },
+        { id: 5, name: 'Limited Travis Graphix Hood', category: 'Graphic Sweats', price: '₹3,499.00', image_url: '/images/travis_sweat.png', is_member_only: true },
         { id: 6, name: 'Classic Longline Hoodie', category: 'Hoodies', price: '₹2,499.00', image_url: '/images/hoodies.png' },
         { id: 7, name: 'Signature Logo Tee', category: 'T-Shirts', price: '₹1,499.00', image_url: '/images/tshirts.png', is_member_only: true },
         { id: 8, name: 'Classic Oversized Hoodie', category: 'Hoodies', price: '₹2,699.00', image_url: '/images/hoodies.png' },

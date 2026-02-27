@@ -21,7 +21,7 @@ const Home: React.FC = () => {
         { id: 1, name: 'Travis Edition Graphix Sweat', category: 'Graphic Sweats', price: '₹2,499.00', image_url: '/images/graphic_sweats.png' },
         { id: 2, name: 'Vintage Acid Wash Sweatshirt', category: 'Graphic Sweats', price: '₹2,299.00', image_url: '/images/hoodies.png' },
         { id: 3, name: '07 Streetide Racing Tee', category: 'Racing Tees', price: '₹1,699.00', image_url: '/images/racing_tees.png' },
-        { id: 4, name: 'Vintage Wash Baggy Denim', category: 'Baggy Denim', price: '₹2,899.00', image_url: '/images/baggy_denim.png' },
+        { id: 4, name: '90s Baggy Utility Denim', category: 'Baggy Denim', price: '₹2,899.00', image_url: '/images/baggy_denim.png' },
     ];
 
     useEffect(() => {
@@ -175,12 +175,12 @@ const Home: React.FC = () => {
                                 </span>
                             </div>
                         </Link>
-                        <Link to="/shop?category=Baggy Denim" className="group relative h-[600px] overflow-hidden bg-black">
-                            <img src="/images/baggy_denim.png" alt="Baggy Denim" className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105" />
+                        <Link to="/shop?category=Graphic Sweats" className="group relative h-[600px] overflow-hidden bg-black">
+                            <img src="/images/travis_sweat.png" alt="Graphic Sweats" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                             <div className="absolute bottom-12 left-12">
                                 <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--accent)] mb-4 block">Archive 02</span>
-                                <h3 className="text-5xl md:text-7xl font-heading font-black italic text-white uppercase tracking-tighter mb-6">Baggy <br />Denim</h3>
+                                <h3 className="text-5xl md:text-7xl font-heading font-black italic text-white uppercase tracking-tighter mb-6">Graphic <br />Sweats</h3>
                                 <span className="inline-flex items-center gap-4 text-white font-black uppercase text-xs tracking-widest group-hover:translate-x-4 transition-transform">
                                     Shop Now <ArrowRight size={20} />
                                 </span>
