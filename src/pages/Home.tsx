@@ -24,6 +24,7 @@ const Home: React.FC = () => {
         { id: 3, name: '07 Streetide Racing Tee', category: 'Racing Tees', price: '₹1,699.00', image_url: '/images/racing_tees.png' },
         { id: 4, name: '90s Baggy Utility Denim', category: 'Baggy Denim', price: '₹2,899.00', image_url: '/images/baggy_denim.png' },
         { id: 9, name: 'M-01 Technical Bomber', category: 'Jackets', price: '₹4,999.00', image_url: '/images/tech_bomber.png' },
+        { id: 10, name: 'Wide-Leg Cargo Shorts // Khaki', category: 'Shorts', price: '₹2,499.00', image_url: '/images/cargo_shorts.png' },
     ];
 
     useEffect(() => {
