@@ -16,6 +16,7 @@ const Home: React.FC = () => {
     const { addToCart } = useCart();
     const [arrivals, setArrivals] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
+    const [heroLoaded, setHeroLoaded] = useState(false);
 
     const fallbackArrivals = [
         { id: 1, name: 'Travis Edition Graphix Sweat', category: 'Graphic Sweats', price: '₹2,499.00', image_url: '/images/graphic_sweats.png' },
@@ -65,13 +66,13 @@ const Home: React.FC = () => {
     return (
         <div className="home-page">
             {/* Hero Section */}
-            <section className="relative h-[95vh] flex items-center justify-center overflow-hidden bg-black">
-                <div className="absolute inset-0 z-0">
+            <section className="relative h-[95vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
+                <div className="absolute inset-0 z-0 bg-[#0a0a0a]">
                     <img
                         src="/images/hero_lace_up.jpg"
                         alt="Ikay Deconstructed Collection"
-                        className="w-full h-full object-cover opacity-80 object-top"
-                        style={{ transform: 'scale(1.05)' }}
+                        onLoad={() => setHeroLoaded(true)}
+                        className={`w-full h-full object-cover object-top transition-all duration-[2000ms] ${heroLoaded ? 'opacity-80 scale-105' : 'opacity-0 scale-110'}`}
                     />
                 </div>
 
@@ -164,7 +165,7 @@ const Home: React.FC = () => {
             <section className="py-32 bg-white">
                 <div className="container">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                        <Link to="/shop?category=Racing Tees" className="group relative h-[600px] overflow-hidden bg-black">
+                        <Link to="/shop?category=Racing Tees" className="group relative h-[600px] overflow-hidden bg-[#111]">
                             <img src="/images/racing_tees.png" alt="Racing Tees" className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105" />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                             <div className="absolute bottom-12 left-12">
@@ -176,7 +177,11 @@ const Home: React.FC = () => {
                             </div>
                         </Link>
                         <Link to="/shop?category=Graphic Sweats" className="group relative h-[600px] overflow-hidden bg-black">
-                            <img src="/images/travis_sweat.png" alt="Graphic Sweats" className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105" />
+                            <img
+                                src="/images/travis_sweat.png"
+                                alt="Graphic Sweats"
+                                className="w-full h-full object-cover object-top transition-all duration-1000 group-hover:scale-105"
+                            />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
                             <div className="absolute bottom-12 left-12">
                                 <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--accent)] mb-4 block">Archive 02</span>
