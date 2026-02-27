@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
                     </div>
                 </div>
 
-                <div className="border-t border-gray-800 pt-8 flex flex-col md:row items-center justify-between gap-4 text-sm text-gray-500">
+                <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-500">
                     <p>© {new Date().getFullYear()} IKAY Retail. All rights reserved.</p>
                     <div className="flex gap-6">
                         <Link to="/terms" className="hover:text-white">Terms of Service</Link>

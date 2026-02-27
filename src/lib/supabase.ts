@@ -14,18 +14,16 @@ if (!isConfigured) {
 export const supabase = isConfigured
     ? createClient(supabaseUrl, supabaseAnonKey)
     : ({
-        from: () => ({
-            select: () => ({
-                order: () => ({
-                    limit: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
-                    then: (cb: any) => Promise.resolve(cb({ data: null, error: new Error('Supabase not configured') }))
-                }),
-                limit: () => ({
-                    order: () => Promise.resolve({ data: null, error: new Error('Supabase not configured') }),
-                    then: (cb: any) => Promise.resolve(cb({ data: null, error: new Error('Supabase not configured') }))
-                }),
-                then: (cb: any) => Promise.resolve(cb({ data: null, error: new Error('Supabase not configured') }))
-            }),
-            then: (cb: any) => Promise.resolve(cb({ data: null, error: new Error('Supabase not configured') }))
-        })
+        from: () => {
+            const chain: any = {
+                select: () => chain,
+                order: () => chain,
+                limit: () => chain,
+                single: () => chain,
+                maybeSingle: () => chain,
+                eq: () => chain,
+                then: (onfulfilled?: any) => Promise.resolve({ data: null, error: new Error('Supabase not configured') }).then(onfulfilled)
+            };
+            return chain;
+        }
     } as any);
