@@ -1,8 +1,11 @@
-import React, { Suspense, lazy, useState } from 'react';
+import React, { Suspense, lazy, useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import SplashScreen from './components/common/SplashScreen';
+
+import { supabase } from './lib/supabase';
+import AuthModal from './components/auth/AuthModal';
 
 // Lazy load pages for performance
 const Home = lazy(() => import('./pages/Home'));
@@ -10,6 +13,18 @@ const Shop = lazy(() => import('./pages/Shop'));
 
 const App: React.FC = () => {
   const [showSplash, setShowSplash] = useState(true);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [user, setUser] = useState<any>(null);
+
+  useEffect(() => {
+    supabase.auth.getUser().then(({ data: { user } }: { data: { user: any } }) => setUser(user));
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event: any, session: any) => {
+      setUser(session?.user ?? null);
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   return (
     <Router>
@@ -18,7 +33,7 @@ const App: React.FC = () => {
           <SplashScreen onFinish={() => setShowSplash(false)} />
         ) : (
           <>
-            <Navbar />
+            <Navbar onAuthOpen={() => setIsAuthModalOpen(true)} user={user} />
             <main className="flex-grow">
               <Suspense fallback={
                 <div className="flex items-center justify-center h-screen">
@@ -32,6 +47,7 @@ const App: React.FC = () => {
               </Suspense>
             </main>
             <Footer />
+            <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
           </>
         )}
       </div>

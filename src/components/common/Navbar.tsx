@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart, User, Menu, X, Search } from 'lucide-react';
+import { supabase } from '../../lib/supabase';
 
-const Navbar: React.FC = () => {
+interface NavbarProps {
+  onAuthOpen: () => void;
+  user: any;
+}
+
+const Navbar: React.FC<NavbarProps> = ({ onAuthOpen, user }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -33,9 +39,35 @@ const Navbar: React.FC = () => {
           <button className="hover:text-[var(--accent)] p-2">
             <Search size={20} />
           </button>
-          <Link to="/admin" className="hover:text-[var(--accent)] p-2">
-            <User size={20} />
-          </Link>
+
+          <div className="group relative">
+            <button
+              className={`hover:text-[var(--accent)] p-2 transition-colors ${user ? 'text-[var(--accent)]' : ''}`}
+              onClick={user ? undefined : onAuthOpen}
+            >
+              <User size={20} />
+            </button>
+
+            {user && (
+              <div className="absolute right-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                <div className="bg-white border p-4 shadow-xl min-w-[200px] rounded-sm">
+                  <p className="text-[10px] text-gray-400 uppercase tracking-widest mb-1">Signed in as</p>
+                  <p className="text-xs font-bold mb-4 truncate">{user.email}</p>
+                  <div className="border-t pt-4 flex flex-col gap-2">
+                    <Link to="/profile" className="text-xs hover:text-[var(--accent)]">My Profile</Link>
+                    <Link to="/orders" className="text-xs hover:text-[var(--accent)]">My Orders</Link>
+                    <button
+                      onClick={() => supabase.auth.signOut()}
+                      className="text-xs text-left text-red-500 hover:text-red-600 mt-2 font-bold"
+                    >
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
           <Link to="/cart" className="relative hover:text-[var(--accent)] p-2">
             <ShoppingCart size={20} />
             <span className="absolute top-0 right-0 bg-[var(--primary)] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
@@ -53,6 +85,17 @@ const Navbar: React.FC = () => {
           <Link to="/shop" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium">Shop</Link>
           <Link to="/collections" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium">Collections</Link>
           <Link to="/about" onClick={() => setIsMobileMenuOpen(false)} className="text-lg font-medium">About</Link>
+          {user && (
+            <button
+              onClick={() => {
+                supabase.auth.signOut();
+                setIsMobileMenuOpen(false);
+              }}
+              className="text-lg font-medium text-red-500 text-left"
+            >
+              Logout
+            </button>
+          )}
         </div>
       )}
     </nav>

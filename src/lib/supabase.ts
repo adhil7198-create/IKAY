@@ -25,5 +25,12 @@ export const supabase = isConfigured
                 then: (onfulfilled?: any) => Promise.resolve({ data: null, error: new Error('Supabase not configured') }).then(onfulfilled)
             };
             return chain;
+        },
+        auth: {
+            signInWithPassword: () => Promise.resolve({ data: { user: null, session: null }, error: new Error('Supabase not configured') }),
+            signUp: () => Promise.resolve({ data: { user: null, session: null }, error: new Error('Supabase not configured') }),
+            signOut: () => Promise.resolve({ error: null }),
+            onAuthStateChange: () => ({ data: { subscription: { unsubscribe: () => { } } } }),
+            getUser: () => Promise.resolve({ data: { user: null }, error: null }),
         }
     } as any);
