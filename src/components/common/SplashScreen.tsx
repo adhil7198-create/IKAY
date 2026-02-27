@@ -43,19 +43,19 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onFinish }) => {
 
                     {/* Logo Container */}
                     <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
+                        initial={{ scale: 0.9, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{
-                            duration: 1.5,
-                            ease: "easeOut",
+                            duration: 2,
+                            ease: [0.22, 1, 0.36, 1],
                             delay: 0.5
                         }}
-                        className="relative z-10 w-full max-w-[400px] px-8 flex items-center justify-center min-h-[200px]"
+                        className="relative z-10 w-full max-w-[320px] px-6 flex items-center justify-center min-h-[150px]"
                     >
                         <img
-                            src="/images/logo_full.jpg"
+                            src="/images/logo_v2.png"
                             alt="IKAY Logo"
-                            className="w-full h-auto object-contain"
+                            className="w-full h-auto object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
                         />
 
                         {/* Ambient Light Effect */}
