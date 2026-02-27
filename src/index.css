@@ -158,12 +158,28 @@ img {
 
 @media (max-width: 768px) {
   :root {
-    --spacing-xl: 2rem;
+    --spacing-xl: 2.5rem;
+  }
+
+  .text-8xl {
+    font-size: 3.5rem;
+  }
+
+  .text-6xl {
+    font-size: 2.5rem;
+  }
+
+  .text-4xl {
+    font-size: 2rem;
   }
 
   .grid-auto {
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: var(--spacing-md);
+  }
+
+  .section {
+    padding: var(--spacing-xl) 0;
   }
 
   .md\:hidden {
@@ -525,6 +541,14 @@ img {
   height: 0.25rem;
 }
 
+.w-3 {
+  width: 0.75rem;
+}
+
+.h-3 {
+  height: 0.75rem;
+}
+
 .w-4 {
   width: 1rem;
 }
@@ -533,12 +557,38 @@ img {
   height: 1rem;
 }
 
+.w-6 {
+  width: 1.5rem;
+}
+
+.h-6 {
+  height: 1.5rem;
+}
+
+.w-8 {
+  width: 2rem;
+}
+
+.h-8 {
+  height: 2rem;
+}
+
 .w-10 {
   width: 2.5rem;
 }
 
 .h-10 {
   height: 2.5rem;
+}
+
+@media (min-width: 769px) {
+  .md\:w-8 {
+    width: 2rem;
+  }
+
+  .md\:h-8 {
+    height: 2rem;
+  }
 }
 
 .bg-white {

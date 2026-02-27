@@ -68,24 +68,24 @@ const Shop: React.FC = () => {
                     <p className="text-gray-500">Discover our full range of premium essentials.</p>
                 </header>
 
-                <div className="flex flex-col lg:flex-row gap-12">
+                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12">
                     {/* Filters Sidebar */}
                     <aside className="w-full lg:w-64 shrink-0">
-                        <div className="sticky top-32">
-                            <div className="flex items-center gap-2 mb-8 font-bold border-b pb-4">
+                        <div className="lg:sticky lg:top-32">
+                            <div className="flex items-center gap-2 mb-6 lg:mb-8 font-bold border-b pb-4">
                                 <ListFilter size={20} />
                                 <span>Filters</span>
                             </div>
 
-                            <div className="flex flex-col gap-8">
+                            <div className="grid grid-cols-2 lg:flex lg:flex-col gap-6 lg:gap-8">
                                 <div>
-                                    <h4 className="font-bold mb-4 flex items-center justify-between">
-                                        Category <ChevronDown size={16} />
+                                    <h4 className="font-bold mb-4 flex items-center justify-between text-sm lg:text-base">
+                                        Category <ChevronDown size={14} className="lg:w-4 lg:h-4" />
                                     </h4>
-                                    <ul className="flex flex-col gap-2 text-gray-600">
+                                    <ul className="flex flex-col gap-2 text-gray-600 text-xs lg:text-sm">
                                         {['T-Shirts', 'Shirts', 'Hoodies', 'Trousers', 'Jeans'].map(cat => (
                                             <li key={cat} className="flex items-center gap-2 cursor-pointer hover:text-black transition-colors">
-                                                <input type="checkbox" className="w-4 h-4 rounded border-gray-300 accent-[var(--primary)]" />
+                                                <input type="checkbox" className="w-3 h-3 lg:w-4 lg:h-4 rounded border-gray-300 accent-[var(--primary)]" />
                                                 <span>{cat}</span>
                                             </li>
                                         ))}
@@ -93,24 +93,24 @@ const Shop: React.FC = () => {
                                 </div>
 
                                 <div>
-                                    <h4 className="font-bold mb-4 flex items-center justify-between">
-                                        Size <ChevronDown size={16} />
+                                    <h4 className="font-bold mb-4 flex items-center justify-between text-sm lg:text-base">
+                                        Size <ChevronDown size={14} className="lg:w-4 lg:h-4" />
                                     </h4>
-                                    <div className="flex flex-wrap gap-2">
+                                    <div className="flex flex-wrap gap-1 lg:gap-2">
                                         {['S', 'M', 'L', 'XL', 'XXL'].map(size => (
-                                            <button key={size} className="w-10 h-10 border flex items-center justify-center text-sm font-medium hover:border-black transition-colors">
+                                            <button key={size} className="w-8 h-8 lg:w-10 lg:h-10 border flex items-center justify-center text-[10px] lg:text-sm font-medium hover:border-black transition-colors">
                                                 {size}
                                             </button>
                                         ))}
                                     </div>
                                 </div>
 
-                                <div>
-                                    <h4 className="font-bold mb-4 flex items-center justify-between">
-                                        Price Range <ChevronDown size={16} />
+                                <div className="col-span-2 lg:col-auto">
+                                    <h4 className="font-bold mb-4 flex items-center justify-between text-sm lg:text-base">
+                                        Price Range <ChevronDown size={14} className="lg:w-4 lg:h-4" />
                                     </h4>
                                     <input type="range" className="w-full h-1 bg-gray-200 rounded-lg appearance-none cursor-pointer accent-[var(--primary)]" />
-                                    <div className="flex justify-between text-xs text-gray-400 mt-2">
+                                    <div className="flex justify-between text-[10px] text-gray-400 mt-2">
                                         <span>₹0</span>
                                         <span>₹5000+</span>
                                     </div>
@@ -121,11 +121,11 @@ const Shop: React.FC = () => {
 
                     {/* Product Grid */}
                     <div className="flex-1">
-                        <div className="flex justify-between items-center mb-8 border-b pb-4">
-                            <p className="text-gray-500">
+                        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 lg:mb-8 border-b pb-4 gap-4">
+                            <p className="text-gray-500 text-sm">
                                 {loading ? 'Loading products...' : `Showing ${products.length} products`}
                             </p>
-                            <div className="flex items-center gap-2 font-medium cursor-pointer">
+                            <div className="flex items-center gap-2 font-medium cursor-pointer text-sm">
                                 <span>Sort by: Featured</span>
                                 <ChevronDown size={16} />
                             </div>

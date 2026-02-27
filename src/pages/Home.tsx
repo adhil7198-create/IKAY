@@ -76,22 +76,22 @@ const Home: React.FC = () => {
                 </div>
 
                 <div className="container relative z-10 text-white">
-                    <div className="max-w-2xl">
-                        <span className="inline-block px-4 py-1 bg-[var(--accent)] text-black font-bold text-xs uppercase tracking-widest mb-6 animate-in slide-in-from-left-4 duration-500">
+                    <div className="max-w-2xl px-4 md:px-0">
+                        <span className="inline-block px-4 py-1 bg-[var(--accent)] text-black font-bold text-[10px] md:text-xs uppercase tracking-widest mb-4 md:mb-6 animate-in slide-in-from-left-4 duration-500">
                             New Collection 2026
                         </span>
-                        <h1 className="text-6xl md:text-8xl mb-8 leading-tight animate-in slide-in-from-left-8 duration-700 delay-100">
+                        <h1 className="text-4xl md:text-6xl lg:text-8xl mb-6 md:mb-8 leading-tight animate-in slide-in-from-left-8 duration-700 delay-100">
                             Elevate Your <br />
                             <span className="italic">Everyday</span> Style.
                         </h1>
-                        <p className="text-xl text-gray-200 mb-10 max-w-lg animate-in slide-in-from-left-12 duration-1000 delay-200">
-                            Discover premium, minimal clothing designed for the modern urban lifestyle. Crafted in Bangalore, delivered to your doorstep.
+                        <p className="text-lg md:text-xl text-gray-200 mb-8 md:mb-10 max-w-lg animate-in slide-in-from-left-12 duration-1000 delay-200">
+                            Discover premium, minimal clothing designed for the modern urban lifestyle. Managed from Bangalore, delivered to your doorstep.
                         </p>
-                        <div className="flex gap-4 animate-in slide-in-from-bottom-4 duration-1200 delay-300">
-                            <Link to="/shop" className="btn btn-primary bg-white text-black hover:bg-[var(--accent)] hover:text-black px-8 py-4 text-lg">
+                        <div className="flex flex-col sm:flex-row gap-4 animate-in slide-in-from-bottom-4 duration-1200 delay-300">
+                            <Link to="/shop" className="btn btn-primary bg-white text-black hover:bg-[var(--accent)] hover:text-black px-8 py-3 md:py-4 text-md md:text-lg">
                                 Shop Collection <ArrowRight size={20} />
                             </Link>
-                            <Link to="/shop?category=New" className="btn btn-outline border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg">
+                            <Link to="/shop?category=New" className="btn btn-outline border-white text-white hover:bg-white hover:text-black px-8 py-3 md:py-4 text-md md:text-lg">
                                 View Lookbook
                             </Link>
                         </div>
@@ -100,22 +100,22 @@ const Home: React.FC = () => {
             </section>
 
             {/* Features Bar */}
-            <div className="bg-[var(--bg-secondary)] py-10 border-b">
-                <div className="container grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="bg-[var(--bg-secondary)] py-8 md:py-10 border-b">
+                <div className="container grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center text-xs md:text-base">
                     <div className="flex flex-col items-center gap-2">
-                        <Truck className="text-[var(--accent)]" size={32} />
-                        <h4 className="font-bold">Fast Delivery</h4>
-                        <p className="text-sm text-gray-500">Free shipping on orders over ₹1999</p>
+                        <Truck className="text-[var(--accent)] w-6 h-6 md:w-8 md:h-8" />
+                        <h4 className="font-bold text-sm md:text-base">Fast Delivery</h4>
+                        <p className="text-xs text-gray-500">Free shipping on orders over ₹1999</p>
                     </div>
                     <div className="flex flex-col items-center gap-2">
-                        <ShieldCheck className="text-[var(--accent)]" size={32} />
-                        <h4 className="font-bold">Secure Payment</h4>
-                        <p className="text-sm text-gray-500">100% secure payment gateways</p>
+                        <ShieldCheck className="text-[var(--accent)] w-6 h-6 md:w-8 md:h-8" />
+                        <h4 className="font-bold text-sm md:text-base">Secure Payment</h4>
+                        <p className="text-xs text-gray-500">100% secure payment gateways</p>
                     </div>
                     <div className="flex flex-col items-center gap-2">
-                        <ShoppingBag className="text-[var(--accent)]" size={32} />
-                        <h4 className="font-bold">Easy Returns</h4>
-                        <p className="text-sm text-gray-500">14-day hassle-free return policy</p>
+                        <ShoppingBag className="text-[var(--accent)] w-6 h-6 md:w-8 md:h-8" />
+                        <h4 className="font-bold text-sm md:text-base">Easy Returns</h4>
+                        <p className="text-xs text-gray-500">14-day hassle-free return policy</p>
                     </div>
                 </div>
             </div>
@@ -123,33 +123,33 @@ const Home: React.FC = () => {
             {/* Category Grid */}
             <section className="section bg-white">
                 <div className="container">
-                    <div className="flex justify-between items-end mb-12">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 gap-4">
                         <div>
-                            <h2 className="text-4xl mb-4">Shop by Category</h2>
-                            <p className="text-gray-500">Explore our curated collections</p>
+                            <h2 className="text-3xl md:text-4xl mb-2 md:mb-4">Shop by Category</h2>
+                            <p className="text-sm md:text-base text-gray-500">Explore our curated collections</p>
                         </div>
-                        <Link to="/shop" className="text-black font-bold border-b-2 border-black pb-1 hover:text-[var(--accent)] hover:border-[var(--accent)]">
+                        <Link to="/shop" className="text-black font-bold border-b-2 border-black pb-1 hover:text-[var(--accent)] hover:border-[var(--accent)] text-sm md:text-base">
                             View All Categories
                         </Link>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                        <Link to="/shop?category=T-Shirts" className="group relative h-[500px] overflow-hidden rounded-sm">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                        <Link to="/shop?category=T-Shirts" className="group relative h-[350px] md:h-[500px] overflow-hidden rounded-sm">
                             <img src="/images/tshirts.png" alt="T-Shirts" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-                            <div className="absolute bottom-10 left-10 text-white">
-                                <h3 className="text-3xl mb-2">Premium T-Shirts</h3>
-                                <p className="mb-4 opacity-0 group-hover:opacity-100 transition-opacity">Soft cotton essentials</p>
-                                <div className="flex items-center gap-2 font-bold">Shop Now <ArrowRight size={18} /></div>
+                            <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 text-white">
+                                <h3 className="text-2xl md:text-3xl mb-1 md:mb-2">Premium T-Shirts</h3>
+                                <p className="text-sm mb-3 md:mb-4 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">Soft cotton essentials</p>
+                                <div className="flex items-center gap-2 font-bold text-sm md:text-base">Shop Now <ArrowRight size={18} /></div>
                             </div>
                         </Link>
-                        <Link to="/shop?category=Hoodies" className="group relative h-[500px] overflow-hidden rounded-sm">
+                        <Link to="/shop?category=Hoodies" className="group relative h-[350px] md:h-[500px] overflow-hidden rounded-sm">
                             <img src="/images/hoodie_category_v2.jpg" alt="Hoodies" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-                            <div className="absolute bottom-10 left-10 text-white">
-                                <h3 className="text-3xl mb-2">Street Hoodies</h3>
-                                <p className="mb-4 opacity-0 group-hover:opacity-100 transition-opacity">Cozy urban staples</p>
-                                <div className="flex items-center gap-2 font-bold">Shop Now <ArrowRight size={18} /></div>
+                            <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 text-white">
+                                <h3 className="text-2xl md:text-3xl mb-1 md:mb-2">Street Hoodies</h3>
+                                <p className="text-sm mb-3 md:mb-4 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">Cozy urban staples</p>
+                                <div className="flex items-center gap-2 font-bold text-sm md:text-base">Shop Now <ArrowRight size={18} /></div>
                             </div>
                         </Link>
                     </div>
@@ -194,19 +194,19 @@ const Home: React.FC = () => {
             {/* Newsletter */}
             <section className="section bg-[var(--primary)] text-white overflow-hidden relative">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--accent)] rounded-full blur-[100px] opacity-20 -mr-32 -mt-32"></div>
-                <div className="container max-w-4xl text-center relative z-10">
-                    <h2 className="text-4xl mb-6 font-bold">Join the IKAY Club</h2>
-                    <p className="text-gray-400 mb-10 text-lg">
-                        Subscribe to receive updates, access to exclusive deals, and more. <br />
+                <div className="container max-w-4xl text-center relative z-10 px-4">
+                    <h2 className="text-3xl md:text-4xl mb-6 font-bold">Join the IKAY Club</h2>
+                    <p className="text-gray-400 mb-8 md:mb-10 text-md md:text-lg">
+                        Subscribe to receive updates, access to exclusive deals, and more. <br className="hidden md:block" />
                         Plus, get 10% off your first order.
                     </p>
                     <form className="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
                         <input
                             type="email"
                             placeholder="your@email.com"
-                            className="flex-1 px-6 py-4 bg-white/10 border border-white/20 text-white rounded-sm focus:outline-none focus:border-[var(--accent)]"
+                            className="flex-1 px-6 py-3 md:py-4 bg-white/10 border border-white/20 text-white rounded-sm focus:outline-none focus:border-[var(--accent)]"
                         />
-                        <button className="btn btn-primary bg-[var(--accent)] text-black hover:bg-white px-8 py-4">
+                        <button className="btn btn-primary bg-[var(--accent)] text-black hover:bg-white px-8 py-3 md:py-4">
                             Subscribe
                         </button>
                     </form>
