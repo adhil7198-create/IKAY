@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../lib/supabase';
-import { Package, ChevronRight, CheckCircle2, Truck, ExternalLink, Loader2, MapPin, Clock } from 'lucide-react';
+import { Package, ChevronRight, CheckCircle2, Truck, ExternalLink, MapPin, Clock } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 interface Order {

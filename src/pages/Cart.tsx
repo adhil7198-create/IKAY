@@ -137,7 +137,7 @@ const Cart: React.FC = () => {
                                             return;
                                         }
 
-                                        const { data, error } = await supabase.from('orders').insert([{
+                                        const { error } = await supabase.from('orders').insert([{
                                             user_id: user.id,
                                             total_amount: cartTotal,
                                             status: 'processing',

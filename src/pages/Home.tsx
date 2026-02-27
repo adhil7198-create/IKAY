@@ -66,13 +66,13 @@ const Home: React.FC = () => {
     return (
         <div className="home-page">
             {/* Hero Section */}
-            <section className="relative h-[95vh] flex items-center justify-center overflow-hidden bg-[#0a0a0a]">
-                <div className="absolute inset-0 z-0 bg-[#0a0a0a]">
+            <section className="relative h-[85vh] flex items-center justify-center overflow-hidden bg-[#0d0d0d]">
+                <div className="absolute inset-0 z-0 bg-[#0d0d0d] flex items-center justify-center">
                     <img
                         src="/images/hero_lace_up.jpg"
                         alt="Ikay Deconstructed Collection"
                         onLoad={() => setHeroLoaded(true)}
-                        className={`w-full h-full object-cover object-top transition-all duration-[2000ms] ${heroLoaded ? 'opacity-80 scale-105' : 'opacity-0 scale-110'}`}
+                        className={`max-w-full max-h-full object-contain transition-all duration-[2000ms] ${heroLoaded ? 'opacity-90 blur-0 scale-100' : 'opacity-0 blur-2xl scale-95'}`}
                     />
                 </div>
 
