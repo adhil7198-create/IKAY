@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ChevronDown, ListFilter, Loader2 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { useCart } from '../context/CartContext';
 
 interface Product {
     id: string | number;
@@ -11,6 +12,7 @@ interface Product {
 }
 
 const Shop: React.FC = () => {
+    const { addToCart } = useCart();
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -147,7 +149,12 @@ const Shop: React.FC = () => {
                                                 className="w-full h-full object-cover group-hover:scale-105 transition-all duration-700"
                                             />
                                             <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-all duration-300">
-                                                <button className="btn btn-primary w-full py-3 text-sm">Add to Cart</button>
+                                                <button
+                                                    onClick={() => addToCart(product)}
+                                                    className="btn btn-primary w-full py-3 text-sm active:scale-95 transition-transform"
+                                                >
+                                                    Add to Cart
+                                                </button>
                                             </div>
                                         </div>
                                         <h3 className="font-bold mb-1">{product.name}</h3>

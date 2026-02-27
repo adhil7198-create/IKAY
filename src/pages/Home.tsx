@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ShoppingBag, ShieldCheck, Truck, Loader2 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import { useCart } from '../context/CartContext';
 
 interface Product {
     id: string | number;
@@ -12,6 +13,7 @@ interface Product {
 }
 
 const Home: React.FC = () => {
+    const { addToCart } = useCart();
     const [arrivals, setArrivals] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
 
@@ -178,7 +180,12 @@ const Home: React.FC = () => {
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                         />
                                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/10">
-                                            <button className="btn btn-primary rounded-full p-4"><ShoppingBag size={24} /></button>
+                                            <button
+                                                onClick={() => addToCart(product)}
+                                                className="btn btn-primary rounded-full p-4 active:scale-90 transition-transform"
+                                            >
+                                                <ShoppingBag size={24} />
+                                            </button>
                                         </div>
                                     </div>
                                     <h3 className="font-bold mb-1">{product.name}</h3>

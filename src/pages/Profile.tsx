@@ -85,7 +85,10 @@ const Profile: React.FC = () => {
                                 <button className="flex items-center gap-3 p-3 bg-black text-white rounded-sm text-sm font-medium">
                                     <User size={18} /> Profile Information
                                 </button>
-                                <button className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded-sm text-sm font-medium transition-colors">
+                                <button
+                                    onClick={() => navigate('/orders')}
+                                    className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded-sm text-sm font-medium transition-colors"
+                                >
                                     <Package size={18} /> My Orders
                                 </button>
                                 <button className="flex items-center gap-3 p-3 hover:bg-gray-50 rounded-sm text-sm font-medium transition-colors">

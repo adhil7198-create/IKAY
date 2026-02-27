@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ShoppingCart, User, Menu, X, Search } from 'lucide-react';
 import { supabase } from '../../lib/supabase';
+import { useCart } from '../../context/CartContext';
 
 interface NavbarProps {
   onAuthOpen: () => void;
@@ -9,6 +10,7 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ onAuthOpen, user }) => {
+  const { cartCount } = useCart();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -70,7 +72,11 @@ const Navbar: React.FC<NavbarProps> = ({ onAuthOpen, user }) => {
 
           <Link to="/cart" className="relative hover:text-[var(--accent)] p-2">
             <ShoppingCart size={20} />
-            <span className="absolute top-0 right-0 bg-[var(--primary)] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">0</span>
+            {cartCount > 0 && (
+              <span className="absolute top-0 right-0 bg-[var(--primary)] text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center animate-in fade-in scale-in duration-300">
+                {cartCount}
+              </span>
+            )}
           </Link>
           <button className="md:hidden p-2" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
