@@ -29,15 +29,51 @@ create policy "Allow public read access"
 
 -- 5. Insert Sample Data
 insert into public.products (name, category, price, image_url) values
-('Essential White Linen Shirt', 'Shirts', 1899.00, '/images/shirt.png'),
-('Premium Urban Hoodie', 'Hoodies', 2499.00, '/images/hoodies.png'),
-('Cargo Relaxed Trousers', 'Trousers', 2199.00, '/images/trousers.png'),
-('Classic Street Tee', 'T-Shirts', 1299.00, '/images/tshirts.png'),
-('Minimalist Cotton Shirt', 'Shirts', 1699.00, '/images/shirt.png'),
-('Oversized Street Hoodie', 'Hoodies', 2699.00, '/images/hoodies.png'),
-('Modern Slim Trousers', 'Trousers', 1999.00, '/images/trousers.png'),
+('Travis Edition Graphix Sweat', 'Graphic Sweats', 2499.00, '/images/graphic_sweats.png'),
+('Vintage Acid Wash Sweatshirt', 'Graphic Sweats', 2299.00, '/images/hoodies.png'),
+('07 Streetide Racing Tee', 'Racing Tees', 1699.00, '/images/racing_tees.png'),
+('Vintage Wash Baggy Denim', 'Baggy Denim', 2899.00, '/images/baggy_denim.png'),
+('Stone Baggy Cargo Pant', 'Baggy Pants', 2199.00, '/images/baggy_pants.png'),
+('Classic Longline Hoodie', 'Hoodies', 2499.00, '/images/hoodies.png'),
+('Loose Fit Urban Pant', 'Baggy Pants', 1999.00, '/images/baggy_pants.png'),
 ('Signature Logo Tee', 'T-Shirts', 1499.00, '/images/tshirts.png');
 
 -- 6. Indexes for faster searching
 create index idx_products_category on public.products(category);
 create index idx_products_created_at on public.products(created_at);
+
+-- 7. User Roles & Profiles
+create type public.user_role as enum ('admin', 'user');
+
+create table public.profiles (
+    id uuid references auth.users on delete cascade primary key,
+    email text unique not null,
+    full_name text,
+    avatar_url text,
+    role user_role default 'user'::public.user_role,
+    created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+-- Enable RLS for profiles
+alter table public.profiles enable row level security;
+
+-- Profiles Policies
+create policy "Public profiles are viewable by everyone" on public.profiles
+    for select using (true);
+
+create policy "Users can update their own profile" on public.profiles
+    for update using (auth.uid() = id);
+
+-- Trigger to create profile on signup
+create or replace function public.handle_new_user()
+returns trigger as $$
+begin
+  insert into public.profiles (id, email, role)
+  values (new.id, new.email, 'user');
+  return new;
+end;
+$$ language plpgsql security definer;
+
+create trigger on_auth_user_created
+  after insert on auth.users
+  for each row execute procedure public.handle_new_user();

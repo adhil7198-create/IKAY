@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ShoppingBag, ShieldCheck, Truck, Loader2 } from 'lucide-react';
+import { ArrowRight, Loader2 } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useCart } from '../context/CartContext';
 
@@ -18,16 +18,15 @@ const Home: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     const fallbackArrivals = [
-        { id: 1, name: 'Premium Street Tee', category: 'T-Shirts', price: '₹1,499.00', image_url: '/images/tshirts.png' },
-        { id: 2, name: 'Urban Oversized Hoodie', category: 'Hoodies', price: '₹2,499.00', image_url: '/images/hero_v3.jpg' },
-        { id: 3, name: 'White Linen Shirt', category: 'Shirts', price: '₹1,899.00', image_url: '/images/shirt.png' },
-        { id: 4, name: 'Cargo Urban Trousers', category: 'Trousers', price: '₹2,199.00', image_url: '/images/trousers.png' },
+        { id: 1, name: 'Travis Edition Graphix Sweat', category: 'Graphic Sweats', price: '₹2,499.00', image_url: '/images/graphic_sweats.png' },
+        { id: 2, name: 'Vintage Acid Wash Sweatshirt', category: 'Graphic Sweats', price: '₹2,299.00', image_url: '/images/hoodies.png' },
+        { id: 3, name: '07 Streetide Racing Tee', category: 'Racing Tees', price: '₹1,699.00', image_url: '/images/racing_tees.png' },
+        { id: 4, name: 'Vintage Wash Baggy Denim', category: 'Baggy Denim', price: '₹2,899.00', image_url: '/images/baggy_denim.png' },
     ];
 
     useEffect(() => {
         const fetchArrivals = async () => {
             try {
-                // Fetch first 4 products as "New Arrivals"
                 const { data, error } = await supabase
                     .from('products')
                     .select('*')
@@ -66,34 +65,34 @@ const Home: React.FC = () => {
     return (
         <div className="home-page">
             {/* Hero Section */}
-            <section className="relative h-screen flex items-center overflow-hidden">
+            <section className="relative h-[95vh] flex items-center justify-center overflow-hidden bg-black">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/images/hero_v3.jpg"
-                        alt="Ikay Fashion"
-                        className="w-full h-full object-cover scale-105 animate-pulse-slow"
-                        style={{ animation: 'zoom-out 20s infinite alternate' }}
+                        src="/images/hero_racing.png"
+                        alt="Ikay Streetwear"
+                        className="w-full h-full object-cover opacity-80"
+                        style={{ transform: 'scale(1.05)' }}
                     />
-                    <div className="absolute inset-0 bg-black/40"></div>
                 </div>
 
-                <div className="container relative z-10 text-white">
-                    <div className="max-w-2xl px-4 md:px-0">
-                        <span className="inline-block px-4 py-1 bg-[var(--accent)] text-black font-bold text-[10px] md:text-xs uppercase tracking-widest mb-4 md:mb-6 animate-in slide-in-from-left-4 duration-500">
-                            New Collection 2026
+                <div className="container relative z-10 text-center text-white">
+                    <div className="max-w-4xl mx-auto px-4">
+                        <span className="inline-block text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] mb-6 animate-in fade-in slide-in-from-bottom-2 duration-700">
+                            Drop 01 // Streetide
                         </span>
-                        <h1 className="text-4xl md:text-6xl lg:text-8xl mb-6 md:mb-8 leading-tight animate-in slide-in-from-left-8 duration-700 delay-100">
-                            Elevate Your <br />
-                            <span className="italic">Everyday</span> Style.
+                        <h1 className="text-6xl md:text-[10rem] mb-10 leading-[0.9] font-heading font-black italic tracking-tighter animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-100">
+                            THE URBAN <br />
+                            ARCHIVE.
                         </h1>
-                        <p className="text-lg md:text-xl text-gray-200 mb-8 md:mb-10 max-w-lg animate-in slide-in-from-left-12 duration-1000 delay-200">
-                            Discover premium, minimal clothing designed for the modern urban lifestyle. Managed from Bangalore, delivered to your doorstep.
+                        <p className="text-md md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto font-medium animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
+                            Exploration of racing silhouettes and ultra-baggy fits. <br className="hidden md:block" />
+                            Engineered for the modern concrete jungle.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 animate-in slide-in-from-bottom-4 duration-1200 delay-300">
-                            <Link to="/shop" className="btn btn-primary bg-white text-black hover:bg-[var(--accent)] hover:text-black px-8 py-3 md:py-4 text-md md:text-lg">
-                                Shop Collection <ArrowRight size={20} />
+                        <div className="flex flex-col sm:flex-row justify-center gap-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+                            <Link to="/shop" className="px-12 py-5 bg-white text-black font-black uppercase text-xs tracking-widest hover:bg-[var(--accent)] hover:text-white transition-all transform hover:scale-105">
+                                Shop The Drop
                             </Link>
-                            <Link to="/shop?category=New" className="btn btn-outline border-white text-white hover:bg-white hover:text-black px-8 py-3 md:py-4 text-md md:text-lg">
+                            <Link to="/shop?category=New" className="px-12 py-5 border-2 border-white text-white font-black uppercase text-xs tracking-widest hover:bg-white hover:text-black transition-all transform hover:scale-105">
                                 View Lookbook
                             </Link>
                         </div>
@@ -101,96 +100,59 @@ const Home: React.FC = () => {
                 </div>
             </section>
 
-            {/* Features Bar */}
-            <div className="bg-[var(--bg-secondary)] py-8 md:py-10 border-b">
-                <div className="container grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center text-xs md:text-base">
-                    <div className="flex flex-col items-center gap-2">
-                        <Truck className="text-[var(--accent)] w-6 h-6 md:w-8 md:h-8" />
-                        <h4 className="font-bold text-sm md:text-base">Fast Delivery</h4>
-                        <p className="text-xs text-gray-500">Free shipping on orders over ₹1999</p>
-                    </div>
-                    <div className="flex flex-col items-center gap-2">
-                        <ShieldCheck className="text-[var(--accent)] w-6 h-6 md:w-8 md:h-8" />
-                        <h4 className="font-bold text-sm md:text-base">Secure Payment</h4>
-                        <p className="text-xs text-gray-500">100% secure payment gateways</p>
-                    </div>
-                    <div className="flex flex-col items-center gap-2">
-                        <ShoppingBag className="text-[var(--accent)] w-6 h-6 md:w-8 md:h-8" />
-                        <h4 className="font-bold text-sm md:text-base">Easy Returns</h4>
-                        <p className="text-xs text-gray-500">14-day hassle-free return policy</p>
+            {/* Featured Brand Grid */}
+            <div className="py-16 border-b bg-white overflow-hidden">
+                <div className="container">
+                    <div className="flex animate-scroll-text whitespace-nowrap gap-20 items-center opacity-40">
+                        {['IKAY STREETIDE', 'RACING ARCHIVE', 'ULTRA BAGGY FITS', 'URBAN ESSENTIALS', 'IKAY STREETIDE', 'RACING ARCHIVE'].map((text, i) => (
+                            <span key={i} className="text-4xl md:text-6xl font-black italic tracking-tighter text-black">{text}</span>
+                        ))}
                     </div>
                 </div>
             </div>
 
-            {/* Category Grid */}
-            <section className="section bg-white">
+            {/* Featured Collection */}
+            <section className="section bg-[#0a0a0a] text-white py-32">
                 <div className="container">
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 md:mb-12 gap-4">
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-20">
                         <div>
-                            <h2 className="text-3xl md:text-4xl mb-2 md:mb-4">Shop by Category</h2>
-                            <p className="text-sm md:text-base text-gray-500">Explore our curated collections</p>
+                            <h2 className="text-4xl md:text-6xl font-heading font-black italic uppercase mb-4 tracking-tighter">Latest Arrivals</h2>
+                            <p className="text-gray-500 uppercase tracking-widest text-xs">// Selected garments for Drop 01</p>
                         </div>
-                        <Link to="/shop" className="text-black font-bold border-b-2 border-black pb-1 hover:text-[var(--accent)] hover:border-[var(--accent)] text-sm md:text-base">
-                            View All Categories
+                        <Link to="/shop" className="hidden md:block border-b-2 border-white pb-2 text-xs font-bold uppercase tracking-widest hover:text-[var(--accent)] hover:border-[var(--accent)] transition-all">
+                            Explore All
                         </Link>
                     </div>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                        <Link to="/shop?category=T-Shirts" className="group relative h-[350px] md:h-[500px] overflow-hidden rounded-sm">
-                            <img src="/images/tshirts.png" alt="T-Shirts" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-                            <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 text-white">
-                                <h3 className="text-2xl md:text-3xl mb-1 md:mb-2">Premium T-Shirts</h3>
-                                <p className="text-sm mb-3 md:mb-4 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">Soft cotton essentials</p>
-                                <div className="flex items-center gap-2 font-bold text-sm md:text-base">Shop Now <ArrowRight size={18} /></div>
-                            </div>
-                        </Link>
-                        <Link to="/shop?category=Hoodies" className="group relative h-[350px] md:h-[500px] overflow-hidden rounded-sm">
-                            <img src="/images/hoodie_category_v2.jpg" alt="Hoodies" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-                            <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 text-white">
-                                <h3 className="text-2xl md:text-3xl mb-1 md:mb-2">Street Hoodies</h3>
-                                <p className="text-sm mb-3 md:mb-4 opacity-0 group-hover:opacity-100 transition-opacity hidden md:block">Cozy urban staples</p>
-                                <div className="flex items-center gap-2 font-bold text-sm md:text-base">Shop Now <ArrowRight size={18} /></div>
-                            </div>
-                        </Link>
-                    </div>
-                </div>
-            </section>
-
-            {/* Featured Products */}
-            <section className="section bg-[var(--bg-secondary)]">
-                <div className="container text-center">
-                    <h2 className="text-4xl mb-12">New Arrivals</h2>
 
                     {loading ? (
                         <div className="flex flex-col items-center justify-center py-20 gap-4">
-                            <Loader2 className="animate-spin text-[var(--primary)]" size={40} />
-                            <p className="text-gray-500">Curating the latest arrivals...</p>
+                            <Loader2 className="animate-spin text-white" size={32} />
                         </div>
                     ) : (
-                        <div className="grid-auto text-left">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                             {arrivals.map((product) => (
-                                <div key={product.id} className="group cursor-pointer">
-                                    <div className="relative aspect-[3/4] overflow-hidden bg-gray-200 mb-4 rounded-sm">
-                                        <span className="absolute top-4 left-4 z-10 bg-black text-white px-3 py-1 text-xs font-bold uppercase">New</span>
+                                <div key={product.id} className="group flex flex-col bg-[#111] p-4 border border-white/5 hover:border-white/20 transition-all">
+                                    <div className="relative aspect-[3/4] overflow-hidden bg-[#1a1a1a] mb-6">
                                         <img
                                             src={product.image_url}
                                             alt={product.name}
-                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                            className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 group-hover:opacity-60"
                                         />
-                                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/10">
-                                            <button
-                                                onClick={() => addToCart(product)}
-                                                className="btn btn-primary rounded-full p-4 active:scale-90 transition-transform"
-                                            >
-                                                <ShoppingBag size={24} />
-                                            </button>
+                                        <button
+                                            onClick={() => addToCart(product)}
+                                            className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 scale-90 group-hover:scale-100"
+                                        >
+                                            <span className="bg-white text-black px-6 py-3 text-[10px] font-black uppercase tracking-widest">Add to Cart</span>
+                                        </button>
+                                        <div className="absolute top-4 left-4">
+                                            <span className="bg-[var(--accent)] text-black px-3 py-1 text-[9px] font-black uppercase">Drop 01</span>
                                         </div>
                                     </div>
-                                    <h3 className="font-bold mb-1">{product.name}</h3>
-                                    <p className="text-gray-500 text-sm mb-2">{product.category}</p>
-                                    <p className="font-bold text-[var(--accent)]">{formatPrice(product.price)}</p>
+                                    <h3 className="text-lg font-bold mb-2 uppercase tracking-tight">{product.name}</h3>
+                                    <div className="flex justify-between items-center">
+                                        <p className="text-gray-500 text-xs font-bold uppercase">{product.category}</p>
+                                        <p className="text-white font-black">{formatPrice(product.price)}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
@@ -198,40 +160,59 @@ const Home: React.FC = () => {
                 </div>
             </section>
 
-            {/* Newsletter */}
-            <section className="section bg-[var(--primary)] text-white overflow-hidden relative">
-                <div className="absolute top-0 right-0 w-64 h-64 bg-[var(--accent)] rounded-full blur-[100px] opacity-20 -mr-32 -mt-32"></div>
-                <div className="container max-w-4xl text-center relative z-10 px-4">
-                    <h2 className="text-3xl md:text-4xl mb-6 font-bold">Join the IKAY Club</h2>
-                    <p className="text-gray-400 mb-8 md:mb-10 text-md md:text-lg">
-                        Subscribe to receive updates, access to exclusive deals, and more. <br className="hidden md:block" />
-                        Plus, get 10% off your first order.
-                    </p>
-                    <form className="flex flex-col md:flex-row gap-4 max-w-md mx-auto">
-                        <input
-                            type="email"
-                            placeholder="your@email.com"
-                            className="flex-1 px-6 py-3 md:py-4 bg-white/10 border border-white/20 text-white rounded-sm focus:outline-none focus:border-[var(--accent)]"
-                        />
-                        <button className="btn btn-primary bg-[var(--accent)] text-black hover:bg-white px-8 py-3 md:py-4">
-                            Subscribe
-                        </button>
-                    </form>
+            {/* Category Grid - Street Aesthetic */}
+            <section className="py-32 bg-white">
+                <div className="container">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <Link to="/shop?category=Racing Tees" className="group relative h-[600px] overflow-hidden bg-black">
+                            <img src="/images/racing_tees.png" alt="Racing Tees" className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                            <div className="absolute bottom-12 left-12">
+                                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--accent)] mb-4 block">Archive 01</span>
+                                <h3 className="text-5xl md:text-7xl font-heading font-black italic text-white uppercase tracking-tighter mb-6">Racing <br />Tees</h3>
+                                <span className="inline-flex items-center gap-4 text-white font-black uppercase text-xs tracking-widest group-hover:translate-x-4 transition-transform">
+                                    Shop Now <ArrowRight size={20} />
+                                </span>
+                            </div>
+                        </Link>
+                        <Link to="/shop?category=Baggy Denim" className="group relative h-[600px] overflow-hidden bg-black">
+                            <img src="/images/baggy_denim.png" alt="Baggy Denim" className="w-full h-full object-cover opacity-90 transition-transform duration-1000 group-hover:scale-105" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+                            <div className="absolute bottom-12 left-12">
+                                <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-[var(--accent)] mb-4 block">Archive 02</span>
+                                <h3 className="text-5xl md:text-7xl font-heading font-black italic text-white uppercase tracking-tighter mb-6">Baggy <br />Denim</h3>
+                                <span className="inline-flex items-center gap-4 text-white font-black uppercase text-xs tracking-widest group-hover:translate-x-4 transition-transform">
+                                    Shop Now <ArrowRight size={20} />
+                                </span>
+                            </div>
+                        </Link>
+                    </div>
                 </div>
             </section>
 
-            <style>{`
-        @keyframes zoom-out {
-          from { transform: scale(1.1); }
-          to { transform: scale(1); }
-        }
-        .animate-pulse-slow {
-          animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-      `}</style>
+            {/* Newsletter - Concrete style */}
+            <section className="section bg-[#0f0f0f] border-t border-white/10 text-white">
+                <div className="container py-20 text-center">
+                    <div className="max-w-4xl mx-auto">
+                        <h2 className="text-5xl md:text-8xl font-heading font-black italic italic uppercase mb-8 tracking-tighter">Join The Crew</h2>
+                        <p className="text-gray-400 mb-12 text-lg uppercase tracking-widest font-medium">
+                            Early access to Drop 02 and hidden archives.
+                        </p>
+                        <form className="flex flex-col md:flex-row gap-0 max-w-2xl mx-auto" onSubmit={(e) => e.preventDefault()}>
+                            <input
+                                type="email"
+                                placeholder="ENTER EMAIL ADDRESS"
+                                className="flex-1 px-8 py-6 bg-white/5 border border-white/10 text-white focus:outline-none focus:bg-white/10 transition-all font-bold uppercase tracking-widest"
+                            />
+                            <button className="px-12 py-6 bg-white text-black font-black uppercase text-xs tracking-widest hover:bg-[var(--accent)] transition-all">
+                                SUBSCRIBE
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </section>
         </div>
     );
 };
 
 export default Home;
-

@@ -17,14 +17,14 @@ const Shop: React.FC = () => {
     const [loading, setLoading] = useState(true);
 
     const hardcodedProducts = [
-        { id: 1, name: 'Essential White Linen Shirt', category: 'Shirts', price: '₹1,899.00', image_url: '/images/shirt.png' },
-        { id: 2, name: 'Premium Urban Hoodie', category: 'Hoodies', price: '₹2,499.00', image_url: '/images/hoodies.png' },
-        { id: 3, name: 'Cargo Relaxed Trousers', category: 'Trousers', price: '₹2,199.00', image_url: '/images/trousers.png' },
-        { id: 4, name: 'Classic Street Tee', category: 'T-Shirts', price: '₹1,299.00', image_url: '/images/tshirts.png' },
-        { id: 5, name: 'Minimalist Cotton Shirt', category: 'Shirts', price: '₹1,699.00', image_url: '/images/shirt.png' },
-        { id: 6, name: 'Oversized Street Hoodie', category: 'Hoodies', price: '₹2,699.00', image_url: '/images/hoodies.png' },
-        { id: 7, name: 'Modern Slim Trousers', category: 'Trousers', price: '₹1,999.00', image_url: '/images/trousers.png' },
-        { id: 8, name: 'Signature Logo Tee', category: 'T-Shirts', price: '₹1,499.00', image_url: '/images/tshirts.png' },
+        { id: 1, name: 'Travis Edition Graphix Sweat', category: 'Graphic Sweats', price: '₹2,499.00', image_url: '/images/graphic_sweats.png' },
+        { id: 2, name: 'Vintage Acid Wash Sweatshirt', category: 'Graphic Sweats', price: '₹2,299.00', image_url: '/images/hoodies.png' },
+        { id: 3, name: 'Stone Baggy Cargo Pant', category: 'Baggy Pants', price: '₹2,199.00', image_url: '/images/baggy_pants.png' },
+        { id: 4, name: '07 Streetide Racing Tee', category: 'Racing Tees', price: '₹1,699.00', image_url: '/images/racing_tees.png' },
+        { id: 5, name: 'Vintage Wash Baggy Denim', category: 'Baggy Denim', price: '₹2,899.00', image_url: '/images/baggy_denim.png' },
+        { id: 6, name: 'Classic Longline Hoodie', category: 'Hoodies', price: '₹2,499.00', image_url: '/images/hoodies.png' },
+        { id: 7, name: 'Signature Logo Tee', category: 'T-Shirts', price: '₹1,499.00', image_url: '/images/tshirts.png' },
+        { id: 8, name: 'Classic Oversized Hoodie', category: 'Hoodies', price: '₹2,699.00', image_url: '/images/hoodies.png' },
     ];
 
     useEffect(() => {
@@ -85,7 +85,7 @@ const Shop: React.FC = () => {
                                         Category <ChevronDown size={14} className="lg:w-4 lg:h-4" />
                                     </h4>
                                     <ul className="flex flex-col gap-2 text-gray-600 text-xs lg:text-sm">
-                                        {['T-Shirts', 'Shirts', 'Hoodies', 'Trousers', 'Jeans'].map(cat => (
+                                        {['Racing Tees', 'Graphic Sweats', 'Baggy Pants', 'Hoodies', 'Jeans'].map(cat => (
                                             <li key={cat} className="flex items-center gap-2 cursor-pointer hover:text-black transition-colors">
                                                 <input type="checkbox" className="w-3 h-3 lg:w-4 lg:h-4 rounded border-gray-300 accent-[var(--primary)]" />
                                                 <span>{cat}</span>

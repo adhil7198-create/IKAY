@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
                             <li><Link to="/shop" className="hover:text-white transition-colors">Shop All</Link></li>
                             <li><Link to="/shop?category=T-Shirts" className="hover:text-white transition-colors">T-Shirts</Link></li>
                             <li><Link to="/shop?category=Hoodies" className="hover:text-white transition-colors">Hoodies</Link></li>
-                            <li><Link to="/shop?category=Trousers" className="hover:text-white transition-colors">Trousers</Link></li>
+                            <li><Link to="/shop?category=Baggy Pants" className="hover:text-white transition-colors">Baggy Pants</Link></li>
                         </ul>
                     </div>
 
