@@ -77,3 +77,31 @@ $$ language plpgsql security definer;
 create trigger on_auth_user_created
   after insert on auth.users
   for each row execute procedure public.handle_new_user();
+
+-- 8. Enhance Products for Membership
+alter table public.products add column is_member_only boolean default false;
+
+-- 9. Orders Table (if not exists)
+create table if not exists public.orders (
+    id uuid default gen_random_uuid() primary key,
+    user_id uuid references auth.users not null,
+    total_amount numeric(10, 2) not null,
+    status text default 'processing', -- processing, shipped, delivered, cancelled
+    tracking_number text,
+    created_at timestamp with time zone default timezone('utc'::text, now()) not null
+);
+
+-- Enable RLS for orders
+alter table public.orders enable row level security;
+
+-- Orders Policies
+create policy "Users can view their own orders" on public.orders
+    for select using (auth.uid() = user_id);
+
+create policy "Admins can view all orders" on public.orders
+    for select using (
+        exists (
+            select 1 from public.profiles
+            where id = auth.uid() and role = 'admin'
+        )
+    );

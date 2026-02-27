@@ -27,7 +27,7 @@ const Navbar: React.FC<NavbarProps> = ({ onAuthOpen }) => {
       <div className="container flex items-center justify-between">
         {/* Left: Desktop Menu */}
         <div className="hidden md:flex flex-1 items-center gap-6 font-medium text-sm uppercase tracking-wider">
-          <Link to="/" className="hover:text-[var(--accent)] transition-colors">Home</Link>
+          <Link to="/" className="hover:text-[var(--accent)] transition-colors">Archive</Link>
           <Link to="/shop" className="hover:text-[var(--accent)] transition-colors">Shop</Link>
           {role === 'admin' && (
             <Link to="/admin" className="text-[var(--accent)] font-bold hover:opacity-80 transition-opacity">Admin</Link>
@@ -98,7 +98,7 @@ const Navbar: React.FC<NavbarProps> = ({ onAuthOpen }) => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white absolute top-full left-0 right-0 border-t py-8 px-6 flex flex-col gap-6 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-300">
-          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-xl font-bold uppercase tracking-widest">Home</Link>
+          <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="text-xl font-bold uppercase tracking-widest">Archive</Link>
           <Link to="/shop" onClick={() => setIsMobileMenuOpen(false)} className="text-xl font-bold uppercase tracking-widest">Shop</Link>
           {role === 'admin' && (
             <Link to="/admin" onClick={() => setIsMobileMenuOpen(false)} className="text-xl font-bold uppercase tracking-widest text-[var(--accent)]">Admin Panel</Link>

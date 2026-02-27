@@ -1,11 +1,13 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
 import { Link, useNavigate } from 'react-router-dom';
-import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, ChevronLeft } from 'lucide-react';
+import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, ChevronLeft, Loader2 } from 'lucide-react';
+import { supabase } from '../lib/supabase';
 
 const Cart: React.FC = () => {
     const { cartItems, removeFromCart, updateQuantity, cartTotal, cartCount } = useCart();
     const navigate = useNavigate();
+    const [isCheckingOut, setIsCheckingOut] = React.useState(false);
 
     const formatPrice = (price: number) => {
         return new Intl.NumberFormat('en-IN', {
@@ -125,10 +127,40 @@ const Cart: React.FC = () => {
                             </div>
 
                             <button
-                                onClick={() => navigate('/checkout')}
+                                onClick={async () => {
+                                    setIsCheckingOut(true);
+                                    try {
+                                        const { data: { user } } = await supabase.auth.getUser();
+                                        if (!user) {
+                                            alert("Please log in to complete your order.");
+                                            setIsCheckingOut(false);
+                                            return;
+                                        }
+
+                                        const { data, error } = await supabase.from('orders').insert([{
+                                            user_id: user.id,
+                                            total_amount: cartTotal,
+                                            status: 'processing',
+                                            tracking_number: `IK-${Math.random().toString(36).substring(2, 10).toUpperCase()}`
+                                        }]).select();
+
+                                        if (error) throw error;
+
+                                        // In a real app, clear cart context here
+                                        navigate('/orders');
+                                    } catch (err) {
+                                        console.error(err);
+                                        alert("Transaction failed. Please try again.");
+                                    } finally {
+                                        setIsCheckingOut(false);
+                                    }
+                                }}
+                                disabled={isCheckingOut}
                                 className="btn btn-primary w-full py-5 flex items-center justify-center gap-3 active:scale-95 transition-transform"
                             >
-                                Proceed to Checkout <ArrowRight size={20} />
+                                {isCheckingOut ? <Loader2 className="animate-spin" size={20} /> : (
+                                    <>Initialize Secure Order <ArrowRight size={20} /></>
+                                )}
                             </button>
 
                             <div className="mt-8 flex flex-col gap-4">

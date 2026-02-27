@@ -68,9 +68,9 @@ const Home: React.FC = () => {
             <section className="relative h-[95vh] flex items-center justify-center overflow-hidden bg-black">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src="/images/hero_racing.png"
-                        alt="Ikay Streetwear"
-                        className="w-full h-full object-cover opacity-80"
+                        src="/images/hero_lace_up.jpg"
+                        alt="Ikay Deconstructed Collection"
+                        className="w-full h-full object-cover opacity-80 object-top"
                         style={{ transform: 'scale(1.05)' }}
                     />
                 </div>
@@ -78,15 +78,15 @@ const Home: React.FC = () => {
                 <div className="container relative z-10 text-center text-white">
                     <div className="max-w-4xl mx-auto px-4">
                         <span className="inline-block text-[10px] md:text-xs font-bold uppercase tracking-[0.4em] mb-6 animate-in fade-in slide-in-from-bottom-2 duration-700">
-                            Drop 01 // Streetide
+                            Drop 02 // Deconstructed
                         </span>
                         <h1 className="text-6xl md:text-[10rem] mb-10 leading-[0.9] font-heading font-black italic tracking-tighter animate-in fade-in slide-in-from-bottom-4 duration-1000 delay-100">
-                            THE URBAN <br />
-                            ARCHIVE.
+                            DECONSTRUCTED <br />
+                            CUSTOMS.
                         </h1>
                         <p className="text-md md:text-xl text-gray-300 mb-12 max-w-2xl mx-auto font-medium animate-in fade-in slide-in-from-bottom-6 duration-1000 delay-200">
-                            Exploration of racing silhouettes and ultra-baggy fits. <br className="hidden md:block" />
-                            Engineered for the modern concrete jungle.
+                            A detailed exploration of lace-up silhouettes and raw textures. <br className="hidden md:block" />
+                            Reimagining urban utility through avant-garde design.
                         </p>
                         <div className="flex flex-col sm:flex-row justify-center gap-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
                             <Link to="/shop" className="px-12 py-5 bg-white text-black font-black uppercase text-xs tracking-widest hover:bg-[var(--accent)] hover:text-white transition-all transform hover:scale-105">
@@ -104,7 +104,7 @@ const Home: React.FC = () => {
             <div className="py-16 border-b bg-white overflow-hidden">
                 <div className="container">
                     <div className="flex animate-scroll-text whitespace-nowrap gap-20 items-center opacity-40">
-                        {['IKAY STREETIDE', 'RACING ARCHIVE', 'ULTRA BAGGY FITS', 'URBAN ESSENTIALS', 'IKAY STREETIDE', 'RACING ARCHIVE'].map((text, i) => (
+                        {['IKAY DECONSTRUCTED', 'LACE-UP CUSTOMS', 'RAW TEXTURES', 'AVANT GARDE URBAN', 'IKAY DECONSTRUCTED', 'LACE-UP CUSTOMS'].map((text, i) => (
                             <span key={i} className="text-4xl md:text-6xl font-black italic tracking-tighter text-black">{text}</span>
                         ))}
                     </div>

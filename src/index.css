@@ -629,6 +629,10 @@ img {
   object-fit: cover;
 }
 
+.object-top {
+  object-position: top;
+}
+
 .rounded-sm {
   border-radius: 2px;
 }

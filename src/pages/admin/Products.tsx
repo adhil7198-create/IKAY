@@ -23,6 +23,7 @@ const AdminProducts: React.FC = () => {
     const [newCategory, setNewCategory] = useState('Racing Tees');
     const [newStock, setNewStock] = useState('10');
     const [newImage, setNewImage] = useState('');
+    const [newIsMemberOnly, setNewIsMemberOnly] = useState(false);
 
     useEffect(() => {
         fetchProducts();
@@ -49,7 +50,8 @@ const AdminProducts: React.FC = () => {
             price: parseFloat(newPrice),
             category: newCategory,
             stock_quantity: parseInt(newStock),
-            image_url: newImage || '/images/tshirts.png'
+            image_url: newImage || '/images/tshirts.png',
+            is_member_only: newIsMemberOnly
         }]).select();
 
         if (!error && data) {
@@ -59,6 +61,7 @@ const AdminProducts: React.FC = () => {
             setNewName('');
             setNewPrice('');
             setNewImage('');
+            setNewIsMemberOnly(false);
         }
         setLoading(false);
     };
@@ -230,6 +233,15 @@ const AdminProducts: React.FC = () => {
                                         onChange={(e) => setNewImage(e.target.value)}
                                         className="px-4 py-3 bg-gray-50 border border-gray-100 focus:outline-none focus:border-black text-sm"
                                     />
+                                </div>
+                                <div className="flex items-center gap-3 bg-gray-50 p-4 border border-gray-100">
+                                    <input
+                                        type="checkbox" id="isMemberOnly"
+                                        checked={newIsMemberOnly}
+                                        onChange={(e) => setNewIsMemberOnly(e.target.checked)}
+                                        className="w-4 h-4 accent-black"
+                                    />
+                                    <label htmlFor="isMemberOnly" className="text-xs font-bold uppercase tracking-tight">Set as Member-Only Drop</label>
                                 </div>
                                 <div className="flex gap-4 mt-4">
                                     <button
